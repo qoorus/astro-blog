@@ -8,6 +8,7 @@ const response = await getBlogs({ fields: ["id", "title"] });
 
 <Layout title="qoorus.com">
 	<main>
+		<a class="twitter-timeline" data-width="300" data-height="400" href="https://twitter.com/Qoo_Rus?ref_src=twsrc%5Etfw">Tweets by Qoo_Rus</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 		<ul>
 		{
 			response.contents.map((content: any) => (
