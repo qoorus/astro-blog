@@ -1,0 +1,28 @@
+---
+import { fetchNoteRss } from "../library/fetchNoteRss";
+import { extractArticles } from "../library/extractArticles";
+
+const RSS_URL = "https://note.com/qoorus/rss";
+const data = await fetchNoteRss(RSS_URL);
+const articles = data ? extractArticles(data) : null;
+const latestArticle = articles?.at(0);
+---
+
+{
+    latestArticle ?
+    <a href={latestArticle.link[0]} target="_blank" rel="noopener noreferrer">
+            <h2>{latestArticle.title[0]}</h2>
+            {latestArticle["media:thumbnail"] && latestArticle["media:thumbnail"][0] && (
+                <div>
+                    <img
+                    src={latestArticle["media:thumbnail"][0]}
+                    alt=""
+                    width="800"
+                    height="419"
+                    />
+                </div>
+            )}
+        </a>
+    :
+    <p>記事はありません。</p>
+}
